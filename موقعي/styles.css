@@ -1,0 +1,307 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
+
+/* 1. إعدادات عامة لتصفير المسافات ومنع السحب الأفقي */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: 'Almarai', sans-serif;
+}
+
+body {
+  background-color: rgb(243, 250, 234);
+  overflow-x: hidden; /* يمنع السحب يمين ويسار نهائياً */
+  width: 100%;
+}
+
+/* 2. الهيدر (رأس الصفحة) */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%; /* مسافة أمان من الأطراف */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.nivigaion ul {
+  display: flex;
+  list-style-type: none;
+  gap: 2rem;
+  font-size: 1.2rem;
+}
+
+.nivigaion a {
+  text-decoration: none;
+  color: rgb(73, 148, 167);
+  transition: 0.3s;
+}
+
+.nivigaion a:hover {
+  color: rgb(184, 144, 175);
+}
+
+hr {
+  opacity: 0.2;
+}
+
+/* 3. قسم الهيرو (البداية) */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5rem 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap; /* عشان ينزل تحت بعض في الجوال */
+}
+
+.heroSub {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+  min-width: 300px;
+}
+
+.name {
+  font-size: 3.5rem;
+  color: rgb(179, 147, 179);
+}
+
+.title {
+  font-size: 1.5rem;
+  color: rgb(85, 139, 141);
+}
+
+.heroimg {
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+}
+
+.heroBtns {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.hireme, .cv {
+  padding: 0.7rem 1.5rem;
+  border-radius: 24px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+  text-align: center;
+}
+
+.hireme {
+  background-color: #82adab;
+  color: white;
+}
+
+.cv {
+  background-color: #bd8fba;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* 4. قسم من نحن */
+.AboutMe {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 3rem; /* قللت الفجوة عشان ما يتداخلون */
+  flex-wrap: wrap;
+}
+
+.aboutMeImg {
+  max-width: 400px;
+  width: 100%;
+}
+
+.textContainer {
+  flex: 1;
+  min-width: 300px;
+}
+
+.textTitle {
+  display: flex;
+  gap: 10px;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.aboutName { color: #b17fb0; }
+.aboutTitle { color: rgb(88, 143, 145); }
+
+.aboutMePar {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgb(65, 116, 138);
+}
+
+/* 5. قسم الدورات (الأعمال) */
+.works {
+  background-image: url("assets/svg/background.svg");
+  background-size: cover;
+  padding: 5rem 5%;
+}
+
+.worksContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.works ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  list-style: none;
+  width: 100%;
+  padding-top: 3rem;
+}
+
+.works li {
+  background-color: rgba(255, 255, 255, 0.7); /* خلفية أوضح قليلاً */
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  width: 300px;
+  text-align: center;
+  transition: 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.works li:hover {
+  transform: translateY(-10px); /* يرتفع للأعلى بدل التكبير المزعج */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.works li img {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.course-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #214e63;
+  margin-bottom: 10px;
+}
+
+.course-description {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.5;
+  /* تأثير الظهور عند الـ Hover */
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: 0.5s ease;
+}
+
+.works li:hover .course-description {
+  max-height: 200px;
+  opacity: 1;
+  margin-top: 10px;
+}
+
+/* 6. قسم التواصل */
+.contactContainer {
+  padding: 5rem 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contactTitle {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.contact {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.emailAndPhone {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.emailAndPhone h3 { color: #41748a; }
+
+.socialMedia {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.socialMedia img {
+  width: 30px;
+  transition: 0.3s;
+}
+
+.socialMedia img:hover { transform: scale(1.2); }
+
+.course-details-container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.course-info h2, .course-info h3 {
+    color: #41748a;
+    margin-bottom: 15px;
+}
+
+.video-section {
+    margin: 40px 0;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.back-button {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btn {
+    background-color: #41748a;
+    color: white;
+    padding: 10px 25px;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #b890af;
+}

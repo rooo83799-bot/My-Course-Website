@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سند AI - لوحة التحكم</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            background-color: #f4f6f9;
+        }
+
+        /* القائمة الجانبية - جهة اليمين */
+        .sidebar {
+            width: 250px;
+            background-color: #ffffff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+            border-left: 1px solid #e1e8ed;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #25D366; /* لون الواتساب */
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .nav-item {
+            padding: 15px 20px;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            color: #555;
+            text-decoration: none;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background-color: rgba(37, 211, 102, 0.1);
+            color: #25D366;
+            font-weight: 600;
+        }
+
+        .nav-icon {
+            margin-left: 15px;
+            font-size: 1.2em;
+        }
+
+        /* المحتوى الرئيسي - الوسط */
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            color: #333;
+        }
+
+        /* مربع رفع الملفات */
+        .upload-section {
+            background-color: #ffffff;
+            border: 2px dashed #b5c3c9;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.3s, background-color 0.3s;
+        }
+
+        .upload-section:hover {
+            border-color: #25D366;
+            background-color: rgba(37, 211, 102, 0.02);
+        }
+
+        .upload-icon {
+            font-size: 4em;
+            color: #b5c3c9;
+            margin-bottom: 15px;
+        }
+
+        .upload-text {
+            color: #777;
+            font-size: 1.1em;
+        }
+
+        /* زر ربط الواتساب والإحصائيات */
+        .lower-section {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .whatsapp-connect {
+            flex: 1;
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #1ebe57;
+        }
+
+        .qr-placeholder {
+            width: 150px;
+            height: 150px;
+            background-color: #eee;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        /* الإحصائيات */
+        .stats-section {
+            flex: 2;
+            display: flex;
+            gap: 20px;
+        }
+
+        .stat-card {
+            flex: 1;
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        }
+
+        .stat-title {
+            color: #777;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .stat-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .stat-chart-mock {
+            height: 80px;
+            background-color: #f4f6f9;
+            border-radius: 8px;
+            margin-top: 15px;
+            display: flex;
+            align-items: flex-end;
+            padding: 5px;
+            gap: 2px;
+        }
+
+        .chart-bar {
+            flex: 1;
+            background-color: #25D366;
+            border-radius: 3px;
+        }
+
+        /* أيقونات بسيطة */
+        .icon {
+            display: inline-block;
+            width: 20px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="logo">سند AI</div>
+        <a href="#" class="nav-item active"><span class="icon">📊</span> <span class="text">Dashboard</span></a>
+        <a href="#" class="nav-item"><span class="icon">🤖</span> <span class="text">My Bots</span></a>
+        <a href="#" class="nav-item"><span class="icon">📁</span> <span class="text">Files</span></a>
+        <a href="#" class="nav-item"><span class="icon">⚙️</span> <span class="text">Settings</span></a>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>أهلاً بك، متجر الأناقة</h1>
+        </div>
+
+        <div class="upload-section">
+            <div class="upload-icon">☁️</div>
+            <div class="upload-text">ارفع ملفات متجرك هنا (Upload PDF/Excel)</div>
+            <p style="color: #aaa; font-size: 0.9em;">أو اسحب وأفلت الملفات مباشرة</p>
+        </div>
+
+        <div class="lower-section">
+            
+            <div class="whatsapp-connect">
+                <a href="#" class="whatsapp-btn">
+                    <span class="icon" style="margin-left: 10px;">💬</span> ربط الواتساب (Connect WhatsApp)
+                </a>
+                <div class="qr-placeholder">QR Code</div>
+                <p style="color: #888; font-size: 0.8em; margin-top: 10px;">امسح الرمز لتفعيل الروبوت</p>
+            </div>
+
+            <div class="stats-section">
+                <div class="stat-card">
+                    <div class="stat-title">عدد المحادثات اليوم</div>
+                    <div class="stat-value">1,240</div>
+                    <div class="stat-chart-mock">
+                        <div class="chart-bar" style="height: 30%"></div>
+                        <div class="chart-bar" style="height: 50%"></div>
+                        <div class="chart-bar" style="height: 80%"></div>
+                        <div class="chart-bar" style="height: 60%"></div>
+                        <div class="chart-bar" style="height: 90%"></div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">عدد الطلبات المكتملة</div>
+                    <div class="stat-value">315</div>
+                    <div class="stat-chart-mock">
+                        <div class="chart-bar" style="height: 40%; background-color: #3498db;"></div>
+                        <div class="chart-bar" style="height: 60%; background-color: #3498db;"></div>
+                        <div class="chart-bar" style="height: 50%; background-color: #3498db;"></div>
+                        <div class="chart-bar" style="height: 70%; background-color: #3498db;"></div>
+                        <div class="chart-bar" style="height: 100%; background-color: #3498db;"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
